@@ -55,7 +55,37 @@ function deleteUserPin(pin, callback) {
   timelineRequest(pin, 'DELETE', callback);
 }
 
+/**
+* Set the user's AppGlances with an array of slice objects.
+* @param slices An array of AppGlance slice objects (https://developer.pebble.com/guides/user-interfaces/appglance-rest/#creating-slices)
+* @param callback Callback called when the request is resolved.
+*/
+function setAppGlances(slices, callback) {
+  var url = API_URL_ROOT + 'v1/user/glance/';
+
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    Log('response received: ' + this.responseText);
+    callback(this.responseText);
+  };
+  xhr.open('PUT', url);
+
+  // Set headers
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  // Get token
+  Pebble.getTimelineToken(function(token) {
+    // Add headers
+    xhr.setRequestHeader('X-User-Token', '' + token);
+
+    // Send
+    xhr.send(JSON.stringify({ 'slices': slices }));
+    Log('AppGlance request sent.');
+  }, function() { Log('error getting timeline token'); });
+}
+
 /********************************** Exports ***********************************/
 
 exports.insertUserPin = insertUserPin;
 exports.deleteUserPin = deleteUserPin;
+exports.setAppGlances = setAppGlances;

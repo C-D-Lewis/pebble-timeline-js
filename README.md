@@ -14,10 +14,14 @@ timeline pins from PebbleKit JS directly or a Node.js server.
 
 `deleteUserPin(pin, callback)` - delete a pin previously pushed. The `id` must match.
 
+`setAppGlances(slices, callback)` - set the current collection of AppGlance slice objects.
+
 
 ## Example Usage
 
 In `src/pkjs/index.js`:
+
+**Push a user pin**
 
 ```js
 var timelinejs = require('pebble-timeline-js');
@@ -40,7 +44,22 @@ Pebble.addEventListener('ready', function() {
     console.log('Result: ' + responseText);
   });
 });
+```
 
+**Set an AppGlance**
+
+```js
+var glances = [
+  {
+    layout: {
+      subtitleTemplateString: 'Hello from AppGlance REST!'
+    }
+  }
+];
+
+timelinejs.setAppGlances(glances, function(responseText) {
+  console.log('AppGlance result: ' + responseText);
+});
 ```
 
 
