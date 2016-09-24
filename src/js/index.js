@@ -18,12 +18,6 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
   // User or shared?
   var url = API_URL_ROOT + 'v1/' + ((topics != null) ? 'shared/' : 'user/') + 'pins/' + pin.id;
 
-  // Create XHR
-  if(typeof XMLHttpRequest == 'undefined') {
-    Log('XMLHttpRequest not available. If you\'re using Node.js, install a shim module');
-    return;
-  }
-
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
     Log('response received: ' + this.responseText);

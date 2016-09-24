@@ -7,11 +7,6 @@ timeline pins from PebbleKit JS directly or a Node.js server.
 
 `pebble package install pebble-timeline-js`
 
-If you're using this in a Node.js server (such as one that pushes timeline pins
-to users) make sure to install a shim module (such as 
-[this one](https://www.npmjs.com/package/xmlhttprequest)) to make 
-`XMLHttpRequest` available.
-
 
 ## Example Usage
 
