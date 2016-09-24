@@ -17,7 +17,7 @@ to users) make sure to install a shim module (such as
 
 In `src/pkjs/index.js`:
 
-```
+```js
 var timelinejs = require('pebble-timeline-js');
 
 var pin = {
