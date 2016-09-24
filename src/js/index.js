@@ -1,5 +1,10 @@
 // The timeline public URL root
 var API_URL_ROOT = 'https://timeline-api.getpebble.com/';
+var TAG = 'pebble-timeline-js';
+
+function Log(msg) {
+  console.log(TAG + ': ' + msg);
+}
 
 /**
  * Send a request to the Pebble public web timeline API.
@@ -14,9 +19,14 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
   var url = API_URL_ROOT + 'v1/' + ((topics != null) ? 'shared/' : 'user/') + 'pins/' + pin.id;
 
   // Create XHR
+  if(typeof XMLHttpRequest == 'undefined') {
+    Log('XMLHttpRequest not available. If you\'re using Node.js, install a shim module');
+    return;
+  }
+
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
-    console.log('timeline: response received: ' + this.responseText);
+    Log('response received: ' + this.responseText);
     callback(this.responseText);
   };
   xhr.open(type, url);
@@ -35,8 +45,8 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
 
     // Send
     xhr.send(JSON.stringify(pin));
-    console.log('timeline: request sent.');
-  }, function(error) { console.log('timeline: error getting timeline token: ' + error); });
+    Log('request sent.');
+  }, function() { Log('error getting timeline token'); });
 }
 
 /**
