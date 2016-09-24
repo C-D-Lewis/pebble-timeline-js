@@ -10,13 +10,11 @@ function Log(msg) {
  * Send a request to the Pebble public web timeline API.
  * @param pin The JSON pin to insert. Must contain 'id' field.
  * @param type The type of request, either PUT or DELETE.
- * @param topics Array of topics if a shared pin, 'null' otherwise.
- * @param apiKey Timeline API key for this app, available from dev-portal.getpebble.com
  * @param callback The callback to receive the responseText after the request has completed.
  */
-function timelineRequest(pin, type, topics, apiKey, callback) {
+function timelineRequest(pin, type, callback) {
   // User or shared?
-  var url = API_URL_ROOT + 'v1/' + ((topics != null) ? 'shared/' : 'user/') + 'pins/' + pin.id;
+  var url = API_URL_ROOT + 'v1/user/pins/' + pin.id;
 
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
@@ -27,10 +25,6 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
 
   // Set headers
   xhr.setRequestHeader('Content-Type', 'application/json');
-  if(topics != null) {
-    xhr.setRequestHeader('X-Pin-Topics', '' + topics.join(','));
-    xhr.setRequestHeader('X-API-Key', '' + apiKey);
-  }
 
   // Get token
   Pebble.getTimelineToken(function(token) {
@@ -49,7 +43,7 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
  * @param callback The callback to receive the responseText after the request has completed.
  */
 function insertUserPin(pin, callback) {
-  timelineRequest(pin, 'PUT', null, null, callback);
+  timelineRequest(pin, 'PUT', callback);
 }
 
 /**
@@ -58,7 +52,7 @@ function insertUserPin(pin, callback) {
  * @param callback The callback to receive the responseText after the request has completed.
  */
 function deleteUserPin(pin, callback) {
-  timelineRequest(pin, 'DELETE', null, null, callback);
+  timelineRequest(pin, 'DELETE', callback);
 }
 
 /********************************** Exports ***********************************/
