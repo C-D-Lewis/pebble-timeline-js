@@ -8,6 +8,13 @@ timeline pins from PebbleKit JS directly or a Node.js server.
 `pebble package install pebble-timeline-js`
 
 
+## Methods
+
+`insertUserPin(pin, callback)` - insert a timeline pin for the user running the app.
+
+`deleteUserPin(pin, callback)` - delete a pin previously pushed. The `id` must match.
+
+
 ## Example Usage
 
 In `src/pkjs/index.js`:

@@ -61,31 +61,7 @@ function deleteUserPin(pin, callback) {
   timelineRequest(pin, 'DELETE', null, null, callback);
 }
 
-/**
- * Insert a pin into the timeline for these topics.
- * @param pin The JSON pin to insert.
- * @param topics Array of topics to insert pin to.
- * @param apiKey Timeline API key for this app, available from dev-portal.getpebble.com
- * @param callback The callback to receive the responseText after the request has completed.
- */
-function insertSharedPin(pin, topics, apiKey, callback) {
-  timelineRequest(pin, 'PUT', topics, apiKey, callback);
-}
-
-/**
- * Delete a pin from the timeline for these topics.
- * @param pin The JSON pin to delete.
- * @param topics Array of topics to delete pin from.
- * @param apiKey Timeline API key for this app, available from dev-portal.getpebble.com
- * @param callback The callback to receive the responseText after the request has completed.
- */
-function deleteSharedPin(pin, topics, apiKey, callback) {
-  timelineRequest(pin, 'DELETE', topics, apiKey, callback);
-}
-
 /********************************** Exports ***********************************/
 
 exports.insertUserPin = insertUserPin;
-exports.insertSharedPin = insertSharedPin;
 exports.deleteUserPin = deleteUserPin;
-exports.deleteSharedPin = deleteSharedPin;
