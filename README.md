@@ -61,9 +61,3 @@ timelinejs.setAppGlances(glances, function(responseText) {
   console.log('AppGlance result: ' + responseText);
 });
 ```
-
-
-## TODO
-
-Add methods for wrapping the 
-[AppGlance REST API](https://developer.pebble.com/guides/user-interfaces/appglance-rest).
