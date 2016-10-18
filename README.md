@@ -61,3 +61,12 @@ timelinejs.setAppGlances(glances, function(responseText) {
   console.log('AppGlance result: ' + responseText);
 });
 ```
+
+
+## Changelog
+
+**1.0.4**
+- Initial stable version
+
+**1.1.0**
+- Build for Emery
