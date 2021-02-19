@@ -2,9 +2,7 @@
   "name": "pebble-timeline-js",
   "author": "Chris Lewis",
   "version": "2.0.0",
-  "files": [
-    "dist.zip"
-  ],
+  "main": "src/js/index.js",
   "keywords": [
     "pebble-package"
   ],
