@@ -1,5 +1,5 @@
 // The timeline public URL root
-var API_URL_ROOT = 'https://timeline-api.getpebble.com/';
+var API_URL_ROOT = 'https://timeline-api.rebble.io/';
 var TAG = 'pebble-timeline-js';
 
 function Log(msg) {
@@ -7,7 +7,7 @@ function Log(msg) {
 }
 
 /**
- * Send a request to the Pebble public web timeline API.
+ * Send a request to the Rebble public web timeline API.
  * @param pin The JSON pin to insert. Must contain 'id' field.
  * @param type The type of request, either PUT or DELETE.
  * @param callback The callback to receive the responseText after the request has completed.
@@ -57,7 +57,7 @@ function deleteUserPin(pin, callback) {
 
 /**
 * Set the user's AppGlances with an array of slice objects.
-* @param slices An array of AppGlance slice objects (https://developer.pebble.com/guides/user-interfaces/appglance-rest/#creating-slices)
+* @param slices An array of AppGlance slice objects (https://developer.rebble.io/developer.pebble.com/guides/user-interfaces/appglance-rest/#creating-slices)
 * @param callback Callback called when the request is resolved.
 */
 function setAppGlances(slices, callback) {
